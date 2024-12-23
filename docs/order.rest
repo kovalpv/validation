@@ -1,0 +1,43 @@
+### Case
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "orderItems": []
+}
+
+###
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "orderItems": [
+    {
+      "product": {
+        "id": "682c3a17-e4fe-4dee-baab-e3e707326797",
+        "name": "Молоко"
+      },
+      "price": 99.95,
+      "quantity": 2
+    },
+    {
+      "product": {
+        "id": "682c3a17-e4fe-4dee-baab-e3e707326791",
+        "name": "Bread"
+      },
+      "price": 78.05,
+      "quantity": 2
+    }
+  ]
+}
+
+> {% client.global.set("orderId", response.body.id) %}
+
+###
+GET http://localhost:8080/orders/{{orderId}}
+
+###
+GET http://localhost:8080/orders
+
+###
+GET http://localhost:8080/orders/a5b24ee2-c913-4c28-a907-daf7980b41a4
